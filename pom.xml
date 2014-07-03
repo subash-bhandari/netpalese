@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>sajhasite</groupId>
-	<artifactId>sajhasite</artifactId>
+	<groupId>netpalese</groupId>
+	<artifactId>netpalese</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
-	<name>sajhasite</name>
+	<name>netpalese</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -147,14 +147,14 @@
 			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 			<id>openshift</id>
 			<build>
-				<finalName>sajhasite</finalName>
+				<finalName>netpalese</finalName>
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>
 						<version>2.1.1</version>
 						<configuration>
 							<outputDirectory>deployments</outputDirectory>
-							<warName>sajhasite</warName>
+							<warName>netpalese</warName>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -163,7 +163,7 @@
         <profile>            
             <id>development</id>
             <build>
-                <finalName>sajhasite</finalName>
+                <finalName>netpalese</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -186,7 +186,7 @@
                         <version>2.1.1</version>
                         <configuration>
                             <outputDirectory>/opt/jboss-as-7.1.1.Final/standalone/deployments</outputDirectory>
-                            <warName>sajhasite</warName>
+                            <warName>netpalese</warName>
                         </configuration>
                     </plugin>
                 </plugins>
