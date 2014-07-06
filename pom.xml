@@ -172,9 +172,9 @@
                         <configuration>
                             <filesets>
                                 <fileset>
-                                    <directory>/opt/jboss-as-7.1.1.Final/standalone/deployments</directory>
+                                    <directory>/home/bhesh/tomcat7/webapps</directory>
                                     <includes>
-                                        <include>**/*</include>
+                                        <include>**/netpalese*</include>
                                     </includes>
                                     <followSymlinks>false</followSymlinks>
                                 </fileset>
@@ -185,7 +185,7 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.1.1</version>
                         <configuration>
-                            <outputDirectory>/opt/jboss-as-7.1.1.Final/standalone/deployments</outputDirectory>
+                            <outputDirectory>/home/bhesh/tomcat7/webapps</outputDirectory>
                             <warName>netpalese</warName>
                         </configuration>
                     </plugin>

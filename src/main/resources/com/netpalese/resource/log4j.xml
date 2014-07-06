@@ -17,7 +17,7 @@
     
     <appender name="SAJHASITE_FILE" class="org.apache.log4j.RollingFileAppender">
         <param name="Threshold" value="DEBUG"/>
-        <param name="file" value="/opt/jboss-as-7.1.1.Final/standalone/log/sajhasite.log" />
+        <param name="file" value="/home/bhesh/tomcat7/logs/netpalese.log" />
         <param name="MaxFileSize" value="100KB" />
         <param name="MaxBackupIndex" value="1" />
         <layout class="org.apache.log4j.PatternLayout">

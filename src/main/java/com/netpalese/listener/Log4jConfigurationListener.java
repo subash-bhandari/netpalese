@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Log4jConfigurationListener implements ServletContextListener {
-	public static final String LOG4J_CONFIG_FILE = "com/sajhasite/resource/log4j.xml";
+	public static final String LOG4J_CONFIG_FILE = "com/netpalese/resource/log4j.xml";
 	public static final String JBOSS_LOGGING_PROVIDER_SYS_PROP = "org.jboss.logging.provider"; 
 	public static final String JBOSS_LOGGING_PROVIDER = "log4j";
 
