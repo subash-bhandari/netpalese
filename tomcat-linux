@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Some Tasks For Netpalese" basedir="." default="clean-tomcat-deploy-dir">
+
+    <property name="tomcat.dir" value="/home/bhesh/tomcat7/" />
+	<property name="tomcat.deploy.dir" value="${tomcat.dir}/webapps" />
+	
+	<target name="clean-tomcat-deploy-dir">
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${tomcat.deploy.dir}/netpalese" />
+			<fileset dir="${tomcat.deploy.dir}" includes="netpalese.war" />			
+		</delete>
+	</target>
+
+</project>
