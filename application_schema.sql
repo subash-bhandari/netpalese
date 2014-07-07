@@ -13,8 +13,10 @@ create unique index ix_username on users(username);
 create unique index ix_email on users(email);
 
 create table if not exists authorities (
+      id bigint(20) not null auto_increment,
       username varchar(50) not null,
       authority varchar(50) not null,
+      primary key(id),
       constraint fk_authorities_users foreign key(username) references users(username)
 );
 

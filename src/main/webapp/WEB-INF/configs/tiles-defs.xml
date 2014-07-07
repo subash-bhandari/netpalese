@@ -5,11 +5,26 @@
 
 <tiles-definitions>
 
+	<!--  
     <definition name="base.definition" template="/WEB-INF/jsp/template/baseLayout.jsp">
         <put-attribute name="title" value="" />
         <put-attribute name="contentTitle" value="" />
         <put-attribute name="content" value="" />
     </definition>
+    -->
+    
+    <definition name="base.definition" template="/WEB-INF/jsp/template/baseLayout.jsp">           
+        <put-attribute name="head" value="/WEB-INF/jsp/template/head.jsp"/>
+        <put-attribute name="title" value=""/>
+        <put-attribute name="contentTitle" value="" />
+        <put-attribute name="content" value="" />
+        <put-list-attribute name="cssList" cascade="true">
+            <add-attribute value="/resources/css/style.css" />
+        </put-list-attribute>    
+        <put-list-attribute name="jsList" cascade="true">            
+            <add-attribute value="/resources/js/netpalese.js" />
+        </put-list-attribute>
+	</definition>
 
     <definition name="home" extends="base.definition">
         <put-attribute name="title" value="Home" />
@@ -59,10 +74,18 @@
         <put-attribute name="content" value="/WEB-INF/jsp/users.jsp" />
     </definition>
     
-    <definition name="createpost" extends="base.definition">
+    <definition name="createpost" extends="base.definition">    	
         <put-attribute name="title" value="Create Post" />
         <put-attribute name="contentTitle" value="Create Post" />
         <put-attribute name="content" value="/WEB-INF/jsp/createpost.jsp" />
+        <put-list-attribute name="cssList" cascade="true" inherit="true">
+            <add-attribute value="/resources/css/pagedown.css" />
+        </put-list-attribute>
+        <put-list-attribute name="jsList" cascade="true" inherit="true">
+            <add-attribute value="/resources/js/Markdown.Converter.js" />            
+            <add-attribute value="/resources/js/Markdown.Sanitizer.js" />
+            <add-attribute value="/resources/js/Markdown.Editor.js" />
+        </put-list-attribute>
     </definition>
     
 </tiles-definitions>
