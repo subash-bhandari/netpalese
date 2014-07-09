@@ -98,3 +98,39 @@ div .loginContainer a:active {color:#FFFFFF;}  /* selected link */
 .errorMsg {
 	color: red;
 }
+input.wide {
+	display:block; 
+	width:100%;
+	padding:0;
+	border-width:0;
+	height: 20px;
+}
+div.input-border {
+	border:1px solid gray;
+	padding: 0;
+	margin: 0;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+textarea {
+	resize: none;
+}
+
+td {
+	margin: 0;
+	padding: 0;
+}
+tr {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+table.wide {
+	border: 0;
+	width: 100%;
+	margin: 0;
+	border-spacing: 0;
+    border-collapse: collapse;
+}

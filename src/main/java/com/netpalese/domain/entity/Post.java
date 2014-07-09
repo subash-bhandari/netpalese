@@ -1,5 +1,6 @@
 package com.netpalese.domain.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -21,6 +24,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "posts")
+@NamedQueries(value = {
+		@NamedQuery(name = "getPostsRecentFirst", query = "select p from Post p order by p.updatedAt desc")})
 public class Post extends AbstractEntity {	
 	private static final long serialVersionUID = 1L;
 	
@@ -105,6 +110,13 @@ public class Post extends AbstractEntity {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+	
+	public void addCategory(Category category) {
+		if(categories == null) {
+			categories = new ArrayList<Category>();
+		}
+		categories.add(category);
 	}
 
 	@OneToMany(mappedBy="post")

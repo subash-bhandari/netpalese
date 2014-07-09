@@ -1,6 +1,7 @@
 package com.netpalese.repository;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -55,17 +56,28 @@ public abstract class AbstractRepository<T> {
 		return namedQuery.list();
 	}
 	
+	@SuppressWarnings("rawtypes")
+	private static void setParameter(Query query, String paramName, Object argument) {
+		if(argument instanceof Collection) {
+			query.setParameterList(paramName, (Collection)argument);
+		} else if (argument.getClass().isArray()) {
+			query.setParameterList(paramName, (Object[])argument);
+		} else {
+			query.setParameter(paramName, argument);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	protected final <E> List<E> executeNamedQuery(String queryName, String paramName, Object argument) {
-		Query namedQuery = getSession().getNamedQuery(queryName);		
-		namedQuery.setParameter(paramName, argument);
+		Query namedQuery = getSession().getNamedQuery(queryName);
+		setParameter(namedQuery, paramName, argument);
 		return namedQuery.list();
 	}
 	
 	@SuppressWarnings("unchecked")
 	protected final <E> E executeNamedQueryUniqueResult(String queryName, String paramName, Object argument) {
-		Query namedQuery = getSession().getNamedQuery(queryName);		
-		namedQuery.setParameter(paramName, argument);
+		Query namedQuery = getSession().getNamedQuery(queryName);
+		setParameter(namedQuery, paramName, argument);
 		return (E) namedQuery.uniqueResult();
 	}
 	
@@ -73,7 +85,7 @@ public abstract class AbstractRepository<T> {
 	protected final <E> List<E> executeNamedQuery(String queryName, String[] paramNames, Object[] arguments) {
 		Query namedQuery = getSession().getNamedQuery(queryName);
 		for(int i = 0; i < paramNames.length; i++) {
-			namedQuery.setParameter(paramNames[i], arguments[i]);
+			setParameter(namedQuery, paramNames[i], arguments[i]);
 		}
 		return namedQuery.list();
 	}
@@ -82,7 +94,7 @@ public abstract class AbstractRepository<T> {
 	protected final <E> List<E> executeNamedQuery(String queryName, List<String> paramNames, List<Object> arguments) {
 		Query namedQuery = getSession().getNamedQuery(queryName);
 		for(int i = 0; i < paramNames.size(); i++) {
-			namedQuery.setParameter(paramNames.get(i), arguments.get(i));
+			setParameter(namedQuery, paramNames.get(i), arguments.get(i));
 		}
 		return namedQuery.list();
 	}
@@ -91,7 +103,7 @@ public abstract class AbstractRepository<T> {
 	protected final <E> List<E> executeNamedQuery(String queryName, Map<String, Object> paramNameArgMap) {
 		Query namedQuery = getSession().getNamedQuery(queryName);
 		for (Map.Entry<String, Object> paramNameArg : paramNameArgMap.entrySet()) {
-			namedQuery.setParameter(paramNameArg.getKey(), paramNameArg.getValue());
+			setParameter(namedQuery, paramNameArg.getKey(), paramNameArg.getValue());
 		}
 		return namedQuery.list();
 	}

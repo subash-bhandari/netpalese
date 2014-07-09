@@ -48,6 +48,9 @@ create table posts (
   author_id bigint(20) not null,
   created_ts timestamp not null,
   updated_ts timestamp not null,
+  upvote_count int not null,
+  downvote_count int not null,
+  view_count int not null,
   primary key(id),
   constraint fk_posts_users foreign key(author_id) references users(id)
 );

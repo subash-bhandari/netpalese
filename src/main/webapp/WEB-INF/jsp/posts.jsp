@@ -6,5 +6,30 @@
 	}
 </style>
 
-<h2>This page will display all the posts...</h2>
-<h3>This page is yet to be implemented.</h3>
+<c:forEach items="${posts}" var="post">
+<div style="border: 1px solid red; overflow: auto">
+	<div style="width: 100px; float: left;">
+		<div style=";">
+		likes
+		</div>
+		<div style="">
+		dislikes
+		</div>
+		<div style="">
+		views
+		</div>
+	</div>
+	<div>
+		<div>
+			<div>${post.title}</div>
+			<div style="border: 1px solid red; margin-left: 105px">
+				<div style="border: 1px solid blue; margin-right: 105px">
+					Category list
+				</div>
+				<div style="width: 100px; float: right;">${post.createdAt}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr />
+</c:forEach>

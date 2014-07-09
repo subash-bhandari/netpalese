@@ -8,20 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.netpalese.domain.entity.User;
-import com.netpalese.service.UserService;
+import com.netpalese.domain.entity.Post;
+import com.netpalese.service.PostService;
 
 @Controller
 @RequestMapping("/posts.do")
 public class PostsController {
 	
 	@Autowired
-	private UserService userService;
+	private PostService postService;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String users(final Model model) {
-		List<User> users = userService.listAllUsers();
-		model.addAttribute("users", users);
+	public String getPostsRecentFirst(final Model model) {
+		List<Post> posts = postService.getPostsRecentFirst();
+		model.addAttribute("posts", posts);
 		return "posts";
 	}
 }
